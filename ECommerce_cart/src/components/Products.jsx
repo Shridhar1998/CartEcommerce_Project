@@ -14,8 +14,10 @@ export function Products() {
   useEffect(() => {
     setloading(true);
     Getdata().then((res) => {
+      
       setData(res);
       setfilter(res);
+      console.log("agdg",res)
       setloading(false);
     });
     return () => {
@@ -34,7 +36,11 @@ export function Products() {
           </div>
         </div>
         <div className="row justify-content-center">
-          {loading ? <h3>loading...</h3> : <ShowProducts filter={filter} />}
+          {loading ? (
+            <h3>loading...</h3>
+          ) : (
+            <ShowProducts setfilter={setfilter} data={data} filter={filter} />
+          )}
         </div>
       </div>
     </div>
